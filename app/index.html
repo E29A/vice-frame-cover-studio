@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE FRAME — Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="panel">
+    <header>
+      <h1>VICE <span>FRAME</span></h1>
+      <p class="tag">Cover Studio — photos in, poster out. Fully offline: your photos never leave this machine.</p>
+    </header>
+
+    <section>
+      <h2>Art direction</h2>
+      <div id="presets" class="preset-grid"></div>
+    </section>
+
+    <section>
+      <h2>Photos <small id="photoCount"></small></h2>
+      <div id="drop">Drop photos here, or click to browse<input id="file" type="file" accept="image/*" multiple hidden></div>
+      <div id="strip" class="strip"></div>
+      <div class="row">
+        <button type="button" id="sampleB" class="mini">Sample: Boulevard</button>
+        <button type="button" id="sampleP" class="mini">Sample: Pier</button>
+      </div>
+      <p class="hint">Click a panel on the cover to select it, then click a photo to assign it. Drag on the cover to reposition the selected panel.</p>
+    </section>
+
+    <section>
+      <h2>Layout</h2>
+      <div id="layouts" class="chips"></div>
+    </section>
+
+    <section>
+      <h2>Colour grade</h2>
+      <div id="grades" class="chips"></div>
+    </section>
+
+    <section>
+      <h2>Lettering</h2>
+      <label>Game title <input id="title" type="text" maxlength="42"></label>
+      <label>Caption <input id="caption" type="text" maxlength="64"></label>
+      <div class="row seg" id="titleStyles">
+        <button type="button" data-v="solid">Solid</button>
+        <button type="button" data-v="chrome">Chrome</button>
+        <button type="button" data-v="outline">Outline</button>
+      </div>
+      <div class="row seg" id="titlePos">
+        <button type="button" data-v="top">Title top</button>
+        <button type="button" data-v="bottom">Title bottom</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected panel <small id="selLabel"></small></h2>
+      <label class="slider">Zoom <input id="zoom" type="range" min="1" max="2.6" step="0.01" value="1"></label>
+      <div class="row">
+        <button type="button" id="flip" class="mini">Flip horizontal</button>
+        <button type="button" id="resetPanel" class="mini">Reset panel</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Poster extras</h2>
+      <label>Callout 1 <input id="chip1" type="text" maxlength="24"></label>
+      <label>Callout 2 <input id="chip2" type="text" maxlength="24"></label>
+      <label>Billing line <input id="billing" type="text" maxlength="90"></label>
+      <div class="row checks">
+        <label class="chk"><input type="checkbox" id="chipsOn"> Callouts</label>
+        <label class="chk"><input type="checkbox" id="sealOn"> Seal</label>
+        <label class="chk"><input type="checkbox" id="billingOn"> Billing</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Export PNG</h2>
+      <div class="row seg" id="sizes">
+        <button type="button" data-v="1080x1080">1:1 · 1080</button>
+        <button type="button" data-v="1080x1350">4:5 · 1350</button>
+        <button type="button" data-v="1920x1080">16:9 · 1920</button>
+      </div>
+      <button type="button" id="export">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+  <main id="stage">
+    <canvas id="cover" width="960" height="540" aria-label="Cover preview"></canvas>
+    <p class="stage-hint">Drag on a panel to reposition its photo · Click a panel to select it</p>
+  </main>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
